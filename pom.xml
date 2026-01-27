@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+</project>
+
+    </build>
+        </plugins>
+            </plugin>
+                <version>3.1.2</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+            <plugin>
+
+            </plugin>
+                </configuration>
+                    <release>21</release>
+                <configuration>
+                <version>3.11.0</version>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+            <plugin>
+        <plugins>
+    <build>
+
+    </dependencies>
+        </dependency>
+            <scope>test</scope>
+            <version>${junit.jupiter.version}</version>
+            <artifactId>junit-jupiter</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+        <dependency>
+    <dependencies>
+
+    </properties>
+        <junit.jupiter.version>5.10.0</junit.jupiter.version>
+        <maven.compiler.release>21</maven.compiler.release>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+
+    <version>0.1.0-SNAPSHOT</version>
+    <artifactId>practica-junit6-endes</artifactId>
+    <groupId>com.example</groupId>
+
+    <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
