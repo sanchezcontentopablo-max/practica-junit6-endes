@@ -1,47 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-</project>
-
-    </build>
-        </plugins>
-            </plugin>
-                <version>3.1.2</version>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <groupId>org.apache.maven.plugins</groupId>
-            <plugin>
-
-            </plugin>
-                </configuration>
-                    <release>21</release>
-                <configuration>
-                <version>3.11.0</version>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <groupId>org.apache.maven.plugins</groupId>
-            <plugin>
-        <plugins>
-    <build>
-
-    </dependencies>
-        </dependency>
-            <scope>test</scope>
-            <version>${junit.jupiter.version}</version>
-            <artifactId>junit-jupiter</artifactId>
-            <groupId>org.junit.jupiter</groupId>
-        <dependency>
-    <dependencies>
-
-    </properties>
-        <junit.jupiter.version>5.10.0</junit.jupiter.version>
-        <maven.compiler.release>21</maven.compiler.release>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.source>21</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <properties>
-
-    <version>0.1.0-SNAPSHOT</version>
-    <artifactId>practica-junit6-endes</artifactId>
-    <groupId>com.example</groupId>
-
-    <modelVersion>4.0.0</modelVersion>
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
+    <groupId>edu.sanchezContentoPablo</groupId>
+    <artifactId>practica-junit6-endes</artifactId>
+    <version>1.0.0</version>
+    <name>Guía práctica de JUnit 6</name>
+    <description>Ejemplos ejecutables de cada funcionalidad de JUnit 6 sobre una cuenta bancaria.</description>
+
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <junit.version>6.1.3</junit.version>
+        <!-- Por defecto no se ejecutan los tests etiquetados como "lento" (ver perfil "todos"). -->
+        <tests.excluidos>lento</tests.excluidos>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.4</version>
+                <configuration>
+                    <excludedGroups>${tests.excluidos}</excludedGroups>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.15</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- mvn test -Ptodos  ejecuta también los tests lentos -->
+            <id>todos</id>
+            <properties>
+                <tests.excluidos/>
+            </properties>
+        </profile>
+    </profiles>
+</project>
